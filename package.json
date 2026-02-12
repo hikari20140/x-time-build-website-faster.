@@ -1,0 +1,23 @@
+{
+  "name": "x-time-build-website-faster",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "xtime": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts dev",
+    "build": "tsx src/index.ts build",
+    "start": "tsx src/index.ts start",
+    "compile": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}
