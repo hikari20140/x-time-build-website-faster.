@@ -3,16 +3,952 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XTime Dev</title>
+    <meta name="description" content="X Time — 次世代Webホスティング＆クリエイトサービス。高速デプロイ、グローバルCDN、エッジ関数でWebを加速する。" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>X Time — Build &amp; Host at the Speed of Light</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="X Time — Build &amp; Host at the Speed of Light" />
+    <meta property="og:description" content="次世代Webホスティング＆クリエイトサービス" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main>
-      <h1>XTime</h1>
-      <p>Vite代替のフルスタック開発ツール基盤</p>
-      <button id="ping">/api/hello を呼ぶ</button>
-      <pre id="result">未実行</pre>
+
+    <!-- ── Navigation ───────────────────────────────────── -->
+    <nav class="nav" id="nav">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <span class="logo-mark">✕</span>
+          <span class="logo-text">X Time</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">機能</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-link">製品 <span class="chevron">▾</span></a>
+            <div class="dropdown">
+              <div class="dropdown-section">
+                <p class="dropdown-label">ホスティング</p>
+                <a href="#hosting" class="dropdown-item">
+                  <span class="dropdown-icon">🌐</span>
+                  <span>
+                    <strong>Web Hosting</strong>
+                    <small>静的サイト・SPAを高速配信</small>
+                  </span>
+                </a>
+                <a href="#edge" class="dropdown-item">
+                  <span class="dropdown-icon">⚡</span>
+                  <span>
+                    <strong>Edge Functions</strong>
+                    <small>グローバルエッジで実行</small>
+                  </span>
+                </a>
+                <a href="#storage" class="dropdown-item">
+                  <span class="dropdown-icon">💾</span>
+                  <span>
+                    <strong>Object Storage</strong>
+                    <small>S3互換ストレージ</small>
+                  </span>
+                </a>
+              </div>
+              <div class="dropdown-section">
+                <p class="dropdown-label">開発ツール</p>
+                <a href="#api" class="dropdown-item">
+                  <span class="dropdown-icon">🔌</span>
+                  <span>
+                    <strong>REST API</strong>
+                    <small>完全なAPI管理</small>
+                  </span>
+                </a>
+                <a href="#integrations" class="dropdown-item">
+                  <span class="dropdown-icon">🔗</span>
+                  <span>
+                    <strong>Integrations</strong>
+                    <small>GitHub・Slack・Stripeなど</small>
+                  </span>
+                </a>
+                <a href="#analytics" class="dropdown-item">
+                  <span class="dropdown-icon">📊</span>
+                  <span>
+                    <strong>Analytics</strong>
+                    <small>リアルタイム分析</small>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#pricing" class="nav-link">料金</a></li>
+          <li><a href="#docs" class="nav-link">ドキュメント</a></li>
+          <li><a href="#blog" class="nav-link">ブログ</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#login" class="btn btn-ghost" id="nav-login">ログイン</a>
+          <a href="#signup" class="btn btn-primary" id="nav-signup">無料で始める</a>
+        </div>
+
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="メニューを開く">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#features">機能</a>
+      <a href="#hosting">Web Hosting</a>
+      <a href="#edge">Edge Functions</a>
+      <a href="#api">REST API</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#pricing">料金</a>
+      <a href="#docs">ドキュメント</a>
+      <div class="mobile-nav-actions">
+        <a href="#login" class="btn btn-ghost">ログイン</a>
+        <a href="#signup" class="btn btn-primary">無料で始める</a>
+      </div>
+    </div>
+
+    <main id="app">
+
+      <!-- ── Hero ─────────────────────────────────────────── -->
+      <section class="hero" id="hero">
+        <div class="hero-bg">
+          <div class="hero-grid"></div>
+          <div class="hero-glow hero-glow-1"></div>
+          <div class="hero-glow hero-glow-2"></div>
+          <div class="hero-glow hero-glow-3"></div>
+          <div class="hero-particles" id="particles"></div>
+        </div>
+
+        <div class="container">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>グローバル 8リージョン稼働中</span>
+            <span class="badge-sep">|</span>
+            <span class="badge-status">99.98% Uptime</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-title-line">Web制作を</span>
+            <span class="hero-title-line hero-title-accent">
+              <span class="gradient-text">光速</span>で加速する
+            </span>
+          </h1>
+
+          <p class="hero-desc">
+            X Timeは、デプロイからAPI管理、グローバルCDN、エッジ関数まで<br class="br-lg" />
+            すべてを統合した次世代Webホスティング＆クリエイトサービス。<br class="br-lg" />
+            <strong>push → deploy → live</strong>、それだけ。
+          </p>
+
+          <div class="hero-cta">
+            <a href="#signup" class="btn btn-primary btn-xl" id="hero-cta">
+              <span>無料で始める</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#demo" class="btn btn-outline btn-xl" id="hero-demo">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 5.5l4 2.5-4 2.5v-5z" fill="currentColor"/></svg>
+              <span>デモを見る</span>
+            </a>
+          </div>
+
+          <div class="hero-social-proof">
+            <div class="social-proof-avatars">
+              <div class="avatar" style="background:#f97316">A</div>
+              <div class="avatar" style="background:#3b82f6">B</div>
+              <div class="avatar" style="background:#8b5cf6">C</div>
+              <div class="avatar" style="background:#10b981">D</div>
+              <div class="avatar avatar-more">+</div>
+            </div>
+            <p><strong>10,000+</strong> の開発者が既に利用中</p>
+          </div>
+        </div>
+
+        <!-- Terminal Demo -->
+        <div class="hero-terminal-wrapper">
+          <div class="container">
+            <div class="hero-terminal" id="heroTerminal">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="terminal-title">xtime deploy</span>
+                <div class="terminal-actions">
+                  <button class="terminal-copy" onclick="copyTerminal()">コピー</button>
+                </div>
+              </div>
+              <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line">
+                  <span class="t-prompt">$</span>
+                  <span class="t-cmd typing" id="typingCmd"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="metrics-strip">
+          <div class="container">
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <span class="metric-value" data-target="99.98">0</span><span class="metric-unit">%</span>
+                <span class="metric-label">稼働率 SLA</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-value" data-target="10">0</span><span class="metric-unit">ms</span>
+                <span class="metric-label">東京 TTFB</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-value" data-target="8">0</span><span class="metric-unit">地域</span>
+                <span class="metric-label">グローバル展開</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-value" data-target="10">0</span><span class="metric-unit">K+</span>
+                <span class="metric-label">利用中のサイト</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Trusted By ─────────────────────────────────── -->
+      <section class="trusted-by">
+        <div class="container">
+          <p class="trusted-label">信頼される企業・チームに選ばれています</p>
+          <div class="logo-scroll">
+            <div class="logo-track">
+              <div class="logo-item">TechCorp</div>
+              <div class="logo-item">StartupXYZ</div>
+              <div class="logo-item">DesignStudio</div>
+              <div class="logo-item">DevAgency</div>
+              <div class="logo-item">CloudNative</div>
+              <div class="logo-item">WebFactory</div>
+              <div class="logo-item">AppBuilder</div>
+              <div class="logo-item">CodeLab</div>
+              <!-- duplicate for seamless loop -->
+              <div class="logo-item">TechCorp</div>
+              <div class="logo-item">StartupXYZ</div>
+              <div class="logo-item">DesignStudio</div>
+              <div class="logo-item">DevAgency</div>
+              <div class="logo-item">CloudNative</div>
+              <div class="logo-item">WebFactory</div>
+              <div class="logo-item">AppBuilder</div>
+              <div class="logo-item">CodeLab</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Features ──────────────────────────────────── -->
+      <section class="features section" id="features">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">機能</span>
+            <h2 class="section-title">プロが求める全機能を<br />ひとつのプラットフォームで</h2>
+            <p class="section-desc">開発からデプロイ、運用まで。X Timeは開発ワークフロー全体を最適化します。</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card feature-card-large" id="hosting">
+              <div class="feature-visual">
+                <div class="feature-diagram deploy-diagram">
+                  <div class="deploy-flow">
+                    <div class="deploy-node git-node">
+                      <span class="node-icon">⎇</span>
+                      <span class="node-label">git push</span>
+                    </div>
+                    <div class="deploy-arrow">
+                      <div class="arrow-line animated-line"></div>
+                      <span class="arrow-label">自動ビルド</span>
+                    </div>
+                    <div class="deploy-node build-node">
+                      <span class="node-icon">⚙</span>
+                      <span class="node-label">Build</span>
+                    </div>
+                    <div class="deploy-arrow">
+                      <div class="arrow-line animated-line"></div>
+                      <span class="arrow-label">CDN配信</span>
+                    </div>
+                    <div class="deploy-node live-node">
+                      <span class="node-icon">🌐</span>
+                      <span class="node-label">Live</span>
+                    </div>
+                  </div>
+                  <div class="deploy-time-badge">⚡ avg 23s</div>
+                </div>
+              </div>
+              <div class="feature-content">
+                <div class="feature-tag-badge">ホスティング</div>
+                <h3>Git push → 自動デプロイ</h3>
+                <p>GitHubへのpushを検知して自動でビルド・デプロイ。平均23秒で本番環境に反映。プレビューURLも自動生成。</p>
+                <ul class="feature-list">
+                  <li>✓ GitHub / GitLab 連携</li>
+                  <li>✓ プレビューデプロイ（PR毎に自動生成）</li>
+                  <li>✓ ロールバック（ワンクリック）</li>
+                  <li>✓ カスタムビルドコマンド対応</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="feature-card" id="edge">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">⚡</span>
+              </div>
+              <h3>Edge Functions</h3>
+              <p>グローバル8リージョンのエッジで実行。Node.js / Deno / WASM に対応。コールドスタートなし。</p>
+              <div class="feature-code">
+                <pre><code><span class="c-keyword">export</span> <span class="c-keyword">default</span> <span class="c-fn">async</span>(req) <span class="c-arrow">=></span> {
+  <span class="c-keyword">const</span> user = <span class="c-keyword">await</span> <span class="c-fn">getUser</span>(req)
+  <span class="c-keyword">return</span> <span class="c-fn">Response</span>.json(user)
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="feature-card" id="cdn">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">🌍</span>
+              </div>
+              <h3>グローバルCDN</h3>
+              <p>東京 / 大阪 / シンガポール / ニューヨーク / フランクフルト。ユーザーに最も近いノードから配信。</p>
+              <div class="cdn-map">
+                <div class="cdn-globe">
+                  <div class="cdn-point" style="top:32%;left:78%"><span class="cdn-ping">10ms</span></div>
+                  <div class="cdn-point" style="top:48%;left:72%"><span class="cdn-ping">28ms</span></div>
+                  <div class="cdn-point" style="top:36%;left:25%"><span class="cdn-ping">112ms</span></div>
+                  <div class="cdn-point" style="top:33%;left:48%"><span class="cdn-ping">185ms</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card" id="api">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">🔌</span>
+              </div>
+              <h3>REST API 完全管理</h3>
+              <p>APIキー管理・レート制限・ウェブフック・バージョニング。OpenAPI仕様書も自動生成。</p>
+              <div class="api-demo">
+                <div class="api-endpoint">
+                  <span class="method get">GET</span>
+                  <span class="path">/api/v1/projects</span>
+                  <span class="status-ok">200</span>
+                </div>
+                <div class="api-endpoint">
+                  <span class="method post">POST</span>
+                  <span class="path">/api/v1/deploy</span>
+                  <span class="status-ok">201</span>
+                </div>
+                <div class="api-endpoint">
+                  <span class="method delete">DEL</span>
+                  <span class="path">/api/v1/projects/:id</span>
+                  <span class="status-ok">200</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card" id="integrations">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">🔗</span>
+              </div>
+              <h3>豊富なインテグレーション</h3>
+              <p>GitHub・Slack・Discord・Stripe・Supabase など50以上のサービスと連携可能。</p>
+              <div class="integrations-grid" id="integrationsGrid">
+                <div class="int-badge">GitHub</div>
+                <div class="int-badge">Slack</div>
+                <div class="int-badge">Discord</div>
+                <div class="int-badge">Stripe</div>
+                <div class="int-badge">Supabase</div>
+                <div class="int-badge">Sentry</div>
+                <div class="int-badge">Datadog</div>
+                <div class="int-badge int-more">+45</div>
+              </div>
+            </div>
+
+            <div class="feature-card feature-card-dark" id="analytics">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">📊</span>
+              </div>
+              <h3>リアルタイムアナリティクス</h3>
+              <p>Core Web Vitals・訪問者・帯域幅をリアルタイムに可視化。プライバシーファースト設計。</p>
+              <div class="mini-chart">
+                <div class="chart-bars" id="chartBars"></div>
+                <div class="chart-labels">
+                  <span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card" id="storage">
+              <div class="feature-icon-wrap">
+                <span class="feature-icon">💾</span>
+              </div>
+              <h3>オブジェクトストレージ</h3>
+              <p>S3互換APIで直接アクセス。画像・動画・ファイルを低遅延・大容量で保存・配信。</p>
+              <div class="storage-stats">
+                <div class="storage-bar-wrap">
+                  <div class="storage-bar-label">
+                    <span>使用中</span><span>2.4 GB / 10 GB</span>
+                  </div>
+                  <div class="storage-bar">
+                    <div class="storage-bar-fill" style="width:24%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card feature-card-wide">
+              <div class="feature-content-row">
+                <div>
+                  <div class="feature-icon-wrap"><span class="feature-icon">🔒</span></div>
+                  <h3>セキュリティ＆SSL</h3>
+                  <p>自動SSL発行・更新。DDoS保護・WAF・パスワード保護機能を標準搭載。</p>
+                  <div class="security-badges">
+                    <span class="sec-badge">SSL/TLS</span>
+                    <span class="sec-badge">DDoS Protection</span>
+                    <span class="sec-badge">WAF</span>
+                    <span class="sec-badge">HSTS</span>
+                    <span class="sec-badge">CSP</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="feature-icon-wrap"><span class="feature-icon">🚀</span></div>
+                  <h3>フレームワーク対応</h3>
+                  <p>SvelteKit・Next.js・Nuxt・Astro・Remix など主要フレームワークをゼロコンフィグで対応。</p>
+                  <div class="framework-badges">
+                    <span class="fw-badge svelte">SvelteKit</span>
+                    <span class="fw-badge next">Next.js</span>
+                    <span class="fw-badge nuxt">Nuxt</span>
+                    <span class="fw-badge astro">Astro</span>
+                    <span class="fw-badge remix">Remix</span>
+                    <span class="fw-badge react">React</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── How It Works ──────────────────────────────── -->
+      <section class="how-it-works section" id="howItWorks">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">使い方</span>
+            <h2 class="section-title">3ステップで本番環境へ</h2>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <div class="step-visual">
+                <div class="step-code-block">
+                  <pre><code><span class="c-comment"># プロジェクトを接続</span>
+<span class="c-prompt">$</span> xtime link my-project
+
+<span class="c-ok">✓</span> GitHub connected
+<span class="c-ok">✓</span> Branch: main → production</code></pre>
+                </div>
+              </div>
+              <h3>リポジトリを接続</h3>
+              <p>GitHubリポジトリを選択して接続。フレームワークは自動検出。設定ファイル不要。</p>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <div class="step-visual">
+                <div class="deploy-progress">
+                  <div class="progress-item done">
+                    <span class="pi-icon">✓</span>
+                    <span class="pi-label">依存関係インストール</span>
+                    <span class="pi-time">8.2s</span>
+                  </div>
+                  <div class="progress-item done">
+                    <span class="pi-icon">✓</span>
+                    <span class="pi-label">ビルド実行</span>
+                    <span class="pi-time">12.1s</span>
+                  </div>
+                  <div class="progress-item active">
+                    <span class="pi-icon spinner">◌</span>
+                    <span class="pi-label">エッジ展開中...</span>
+                    <span class="pi-time">3.5s</span>
+                  </div>
+                </div>
+              </div>
+              <h3>自動ビルド＆デプロイ</h3>
+              <p>pushと同時にビルドパイプラインが起動。成功したビルドのみが本番に昇格。</p>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <div class="step-visual">
+                <div class="live-badge-wrap">
+                  <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>LIVE</span>
+                  </div>
+                  <div class="live-url">https://your-site.xtime.app</div>
+                  <div class="live-metrics">
+                    <span>⚡ 9ms TTFB</span>
+                    <span>🔒 SSL</span>
+                    <span>🌍 CDN</span>
+                  </div>
+                </div>
+              </div>
+              <h3>即座に公開</h3>
+              <p>グローバルCDNで即座に配信開始。カスタムドメインもワンクリックで設定可能。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Dashboard Preview ──────────────────────────── -->
+      <section class="dashboard-preview section" id="dashboard">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">ダッシュボード</span>
+            <h2 class="section-title">プロジェクト全体を<br />ひと目で把握</h2>
+          </div>
+
+          <div class="dashboard-mockup" id="dashboardMockup">
+            <!-- Sidebar -->
+            <div class="mock-sidebar">
+              <div class="mock-logo">✕ X Time</div>
+              <nav class="mock-nav">
+                <a class="mock-nav-item active">🏠 ダッシュボード</a>
+                <a class="mock-nav-item">📁 プロジェクト</a>
+                <a class="mock-nav-item">🚀 デプロイ</a>
+                <a class="mock-nav-item">🌐 ドメイン</a>
+                <a class="mock-nav-item">🔌 API</a>
+                <a class="mock-nav-item">📊 アナリティクス</a>
+                <a class="mock-nav-item">🔗 連携</a>
+                <a class="mock-nav-item">💾 ストレージ</a>
+              </nav>
+              <div class="mock-plan-badge">PRO</div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mock-main">
+              <div class="mock-header">
+                <h3 class="mock-title">ダッシュボード</h3>
+                <button class="mock-deploy-btn">＋ 新規デプロイ</button>
+              </div>
+
+              <!-- Stats Row -->
+              <div class="mock-stats">
+                <div class="mock-stat-card">
+                  <span class="msc-label">アクティブサイト</span>
+                  <span class="msc-value">12</span>
+                  <span class="msc-trend up">↑ 2 今月</span>
+                </div>
+                <div class="mock-stat-card">
+                  <span class="msc-label">今月のリクエスト</span>
+                  <span class="msc-value">2.4M</span>
+                  <span class="msc-trend up">↑ 18%</span>
+                </div>
+                <div class="mock-stat-card">
+                  <span class="msc-label">帯域幅</span>
+                  <span class="msc-value">234 GB</span>
+                  <span class="msc-trend">/ 1 TB</span>
+                </div>
+                <div class="mock-stat-card">
+                  <span class="msc-label">稼働率</span>
+                  <span class="msc-value">99.98%</span>
+                  <span class="msc-trend up">↑ Good</span>
+                </div>
+              </div>
+
+              <!-- Projects List -->
+              <div class="mock-projects">
+                <div class="mock-section-title">最近のプロジェクト</div>
+                <div class="mock-project-row">
+                  <div class="mp-info">
+                    <span class="mp-status active-dot"></span>
+                    <span class="mp-name">my-portfolio</span>
+                    <span class="mp-url">my-portfolio.xtime.app</span>
+                  </div>
+                  <div class="mp-meta">
+                    <span class="mp-framework svelte-fw">SvelteKit</span>
+                    <span class="mp-time">2分前</span>
+                  </div>
+                </div>
+                <div class="mock-project-row">
+                  <div class="mp-info">
+                    <span class="mp-status active-dot"></span>
+                    <span class="mp-name">api-server</span>
+                    <span class="mp-url">api.myapp.com</span>
+                  </div>
+                  <div class="mp-meta">
+                    <span class="mp-framework next-fw">Next.js</span>
+                    <span class="mp-time">1時間前</span>
+                  </div>
+                </div>
+                <div class="mock-project-row">
+                  <div class="mp-info">
+                    <span class="mp-status building-dot"></span>
+                    <span class="mp-name">docs-site</span>
+                    <span class="mp-url">docs.xtime.app</span>
+                  </div>
+                  <div class="mp-meta">
+                    <span class="mp-framework astro-fw">Astro</span>
+                    <span class="mp-time">ビルド中...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini Chart -->
+              <div class="mock-chart">
+                <div class="mock-chart-title">今週のリクエスト数</div>
+                <div class="mock-bars" id="mockBars"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── API Section ──────────────────────────────────── -->
+      <section class="api-section section" id="api-section">
+        <div class="container">
+          <div class="api-layout">
+            <div class="api-text">
+              <span class="section-tag">REST API</span>
+              <h2 class="section-title">コードからすべてを<br />制御する</h2>
+              <p class="section-desc">完全なREST APIで、プロジェクト管理からデプロイ、分析まですべてをプログラマブルに操作。CI/CDパイプラインへの組み込みも簡単。</p>
+
+              <div class="api-features">
+                <div class="api-feature-item">
+                  <span class="afi-icon">🔑</span>
+                  <div>
+                    <strong>APIキー管理</strong>
+                    <p>複数キーの発行・権限設定・レート制限</p>
+                  </div>
+                </div>
+                <div class="api-feature-item">
+                  <span class="afi-icon">📡</span>
+                  <div>
+                    <strong>Webhook</strong>
+                    <p>デプロイ・エラーをリアルタイム通知</p>
+                  </div>
+                </div>
+                <div class="api-feature-item">
+                  <span class="afi-icon">📄</span>
+                  <div>
+                    <strong>OpenAPI仕様</strong>
+                    <p>Swagger UIで対話的にAPIを探索</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" id="tryApiBtn">APIをテストする</button>
+            </div>
+
+            <div class="api-demo-panel">
+              <div class="api-tabs">
+                <button class="api-tab active" data-tab="health">Status</button>
+                <button class="api-tab" data-tab="projects">Projects</button>
+                <button class="api-tab" data-tab="deploy">Deploy</button>
+                <button class="api-tab" data-tab="usage">Usage</button>
+              </div>
+              <div class="api-panel">
+                <div class="api-request">
+                  <div class="api-req-header">
+                    <span class="method get">GET</span>
+                    <span class="api-url" id="apiUrl">/api/health</span>
+                    <button class="api-run-btn" id="runApiBtn">▶ 実行</button>
+                  </div>
+                </div>
+                <div class="api-response" id="apiResponse">
+                  <div class="api-resp-header">
+                    <span class="resp-status" id="respStatus">—</span>
+                    <span class="resp-time" id="respTime">—</span>
+                  </div>
+                  <pre class="api-resp-body" id="apiRespBody">// ▶ を押してAPIを実行してください</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Integrations ──────────────────────────────── -->
+      <section class="integrations-section section" id="integrations-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">インテグレーション</span>
+            <h2 class="section-title">あなたのスタックに<br />シームレスに統合</h2>
+            <p class="section-desc">50以上のサービスと接続。開発・通知・決済・監視すべてを一元管理。</p>
+          </div>
+
+          <div class="int-categories">
+            <button class="int-cat active" data-cat="all">すべて</button>
+            <button class="int-cat" data-cat="vcs">VCS</button>
+            <button class="int-cat" data-cat="notification">通知</button>
+            <button class="int-cat" data-cat="database">DB</button>
+            <button class="int-cat" data-cat="monitoring">監視</button>
+            <button class="int-cat" data-cat="payment">決済</button>
+          </div>
+
+          <div class="int-grid" id="intGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Pricing ───────────────────────────────────── -->
+      <section class="pricing section" id="pricing">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">料金</span>
+            <h2 class="section-title">シンプルな料金体系</h2>
+            <p class="section-desc">隠れたコストなし。必要な分だけ。いつでもアップグレード・ダウングレード可能。</p>
+          </div>
+
+          <div class="pricing-toggle">
+            <span class="pt-label" id="ptMonthly">月払い</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="billingToggle" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </label>
+            <span class="pt-label" id="ptYearly">年払い</span>
+            <span class="save-badge">2ヶ月分無料</span>
+          </div>
+
+          <div class="pricing-grid" id="pricingGrid">
+            <!-- Populated by JS -->
+          </div>
+
+          <div class="pricing-note">
+            <p>💳 クレジットカード不要でStarterプランを無料トライアル。アップグレード時にカード登録。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Testimonials ──────────────────────────────── -->
+      <section class="testimonials section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">ユーザーの声</span>
+            <h2 class="section-title">開発者に愛されています</h2>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-text">「X Timeに乗り換えてからデプロイ時間が10分から30秒になった。チームの生産性が劇的に向上。」</p>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background:#f97316">T</div>
+                <div>
+                  <strong>田中 健太</strong>
+                  <span>Lead Engineer @ TechCorp</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card testimonial-featured">
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-text">「APIのドキュメントが充実していて、CI/CDへの組み込みが超簡単だった。GitHubとの連携も完璧。」</p>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background:#3b82f6">S</div>
+                <div>
+                  <strong>Sato Yuki</strong>
+                  <span>Founder @ StartupXYZ</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-text">「東京リージョンのTTFBが10ms以下。他のサービスと比べてダントツに速い。SEOスコアも改善した。」</p>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background:#8b5cf6">M</div>
+                <div>
+                  <strong>松本 あかり</strong>
+                  <span>Frontend Dev @ DesignStudio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA ────────────────────────────────────────── -->
+      <section class="cta-section section" id="cta">
+        <div class="container">
+          <div class="cta-card">
+            <div class="cta-bg-glow"></div>
+            <div class="cta-content">
+              <h2>今すぐ始めましょう</h2>
+              <p>無料プランで最大3プロジェクトをホスト。クレジットカード不要。</p>
+              <div class="cta-actions">
+                <a href="#signup" class="btn btn-white btn-xl">無料アカウントを作成</a>
+                <a href="#docs" class="btn btn-outline-white btn-xl">ドキュメントを見る</a>
+              </div>
+              <div class="cta-note">
+                <span>✓ セットアップ5分以内</span>
+                <span>✓ クレジットカード不要</span>
+                <span>✓ いつでもキャンセル可能</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="nav-logo">
+              <span class="logo-mark">✕</span>
+              <span class="logo-text">X Time</span>
+            </a>
+            <p class="footer-tagline">Build &amp; Host at the Speed of Light</p>
+            <div class="footer-status">
+              <span class="status-dot"></span>
+              <a href="/api/v1/status" target="_blank">All systems operational</a>
+            </div>
+            <div class="footer-social">
+              <a href="#" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+              <a href="#" aria-label="Twitter/X">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" aria-label="Discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>製品</h4>
+            <ul>
+              <li><a href="#hosting">Web Hosting</a></li>
+              <li><a href="#edge">Edge Functions</a></li>
+              <li><a href="#storage">Object Storage</a></li>
+              <li><a href="#api">REST API</a></li>
+              <li><a href="#analytics">Analytics</a></li>
+              <li><a href="#integrations">Integrations</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>開発者</h4>
+            <ul>
+              <li><a href="#docs">ドキュメント</a></li>
+              <li><a href="/api/health" target="_blank">API Reference</a></li>
+              <li><a href="#changelog">Changelog</a></li>
+              <li><a href="#cli">CLI ツール</a></li>
+              <li><a href="#templates">テンプレート</a></li>
+              <li><a href="#examples">サンプルコード</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>会社</h4>
+            <ul>
+              <li><a href="#about">会社概要</a></li>
+              <li><a href="#blog">ブログ</a></li>
+              <li><a href="#careers">採用情報</a></li>
+              <li><a href="#press">プレス</a></li>
+              <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>サポート</h4>
+            <ul>
+              <li><a href="#status">システム状況</a></li>
+              <li><a href="#security">セキュリティ</a></li>
+              <li><a href="#privacy">プライバシーポリシー</a></li>
+              <li><a href="#terms">利用規約</a></li>
+              <li><a href="#sla">SLA</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 X Time, Inc. All rights reserved.</p>
+          <p>東京都渋谷区 | <a href="mailto:hello@xtime.dev">hello@xtime.dev</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ── Modals ─────────────────────────────────────────── -->
+    <div class="modal-overlay" id="authModal" style="display:none">
+      <div class="modal" id="authModalContent">
+        <button class="modal-close" id="closeModal">✕</button>
+        <div class="modal-tabs">
+          <button class="modal-tab active" id="tabLogin">ログイン</button>
+          <button class="modal-tab" id="tabSignup">新規登録</button>
+        </div>
+
+        <!-- Login Form -->
+        <form class="auth-form" id="loginForm">
+          <h2>おかえりなさい</h2>
+          <p class="auth-sub">X Timeアカウントにログイン</p>
+          <div class="form-group">
+            <label>メールアドレス</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>パスワード</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-full">ログイン</button>
+          </div>
+          <div class="auth-divider"><span>または</span></div>
+          <button type="button" class="btn btn-github btn-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHubでログイン
+          </button>
+          <p class="auth-result" id="loginResult"></p>
+        </form>
+
+        <!-- Signup Form -->
+        <form class="auth-form hidden" id="signupForm">
+          <h2>アカウント作成</h2>
+          <p class="auth-sub">無料で始められます</p>
+          <div class="form-group">
+            <label>お名前</label>
+            <input type="text" id="signupName" placeholder="山田 太郎" required />
+          </div>
+          <div class="form-group">
+            <label>メールアドレス</label>
+            <input type="email" id="signupEmail" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>パスワード（8文字以上）</label>
+            <input type="password" id="signupPassword" placeholder="••••••••" required minlength="8" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-full">無料アカウントを作成</button>
+          </div>
+          <p class="auth-result" id="signupResult"></p>
+          <p class="auth-terms">作成することで<a href="#">利用規約</a>と<a href="#">プライバシーポリシー</a>に同意します。</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
